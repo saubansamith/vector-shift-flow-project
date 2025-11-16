@@ -1,0 +1,326 @@
+/* -----------------------------
+   Dark glass theme - global
+   Accent: Electric Cyan #00E5FF
+   ----------------------------- */
+
+:root{
+  --bg-1: #0B0E12;       /* darkest background */
+  --bg-2: #0F1318;       /* panel background */
+  --panel: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --muted: #9AA5B1;
+  --accent: #00E5FF;
+  --accent-2: rgba(0,229,255,0.12);
+  --glass-border: rgba(255,255,255,0.06);
+  --node-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  --glass-blur: 8px;
+  --radius: 12px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial;
+}
+
+/* Page */
+html, body, #root {
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-1) 0%, #071117 100%);
+  color: #E6EEF3;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App layout helpers */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* Toolbar / left panel */
+.pipeline-toolbar {
+  width: 260px;
+  min-width: 200px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-right: 1px solid var(--glass-border);
+  padding: 16px;
+  box-sizing: border-box;
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.01);
+}
+
+.pipeline-toolbar h3 {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 10px 0;
+  letter-spacing: 0.6px;
+}
+
+.toolbar-grid {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* Draggable nodes */
+.draggable-node {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: grab;
+  min-width: 110px;
+  text-align: center;
+  font-size: 13px;
+  color: #cfeef9;
+  box-shadow: 0 6px 18px rgba(3,7,11,0.6);
+  transition: transform .12s ease, box-shadow .12s ease;
+  user-select: none;
+}
+.draggable-node:active { cursor: grabbing; }
+.draggable-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 14px var(--accent-2);
+}
+
+/* Main canvas wrapper */
+.reactflow-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+/* Flow canvas container */
+.canvas-panel {
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.035);
+  background: linear-gradient(180deg, rgba(8,12,14,0.6), rgba(12,16,18,0.5));
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+/* React Flow inner canvas area style override */
+.react-flow__viewport {
+  background-image: radial-gradient(circle at 20% 10%, rgba(0,229,255,0.02), transparent 2%),
+                    radial-gradient(circle at 80% 90%, rgba(168,85,247,0.01), transparent 2%);
+}
+
+/* Node card (BaseNode) */
+.base-node {
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--node-shadow);
+  min-width: 180px;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: blur(var(--glass-blur));
+  pointer-events: all !important;
+}
+
+.base-node .node-header {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.node-icon {
+  width:34px;height:34px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.node-title {
+  font-weight:600;
+  font-size:14px;
+  color: #ECFBFF;
+}
+.node-sub {
+  font-size:12px;
+  color: var(--muted);
+}
+
+/* Node body */
+.base-node .node-body {
+  margin-top:8px;
+  font-size:13px;
+  color:#d7eef8;
+}
+
+/* small description */
+.node-desc {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* Handles styling - neon */
+.react-flow__handle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.react-flow__handle.source {
+  box-shadow: 0 0 14px var(--accent), inset 0 -2px 10px rgba(0,229,255,0.06);
+  background: radial-gradient(circle at 30% 30%, rgba(0,229,255,0.18), rgba(0,229,255,0.06));
+  border-color: rgba(0,229,255,0.75);
+}
+
+.react-flow__handle.target {
+  box-shadow: 0 0 14px rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* handle labels */
+.handle-label {
+  font-size:11px;
+  color:var(--muted);
+  margin: 2px 6px;
+}
+
+/* Node footer small controls */
+.node-footer {
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:10px;
+  align-items:center;
+}
+.node-action {
+  font-size:12px;
+  color: #bfefff;
+  padding:6px 8px;
+  border-radius:8px;
+  background: linear-gradient(180deg, rgba(0,229,255,0.06), rgba(0,229,255,0.02));
+  border: 1px solid rgba(0,229,255,0.08);
+  pointer-events: all !important;
+  cursor: pointer;
+}
+
+/* Submit button */
+.submit-button {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,229,255,0.18);
+  background: linear-gradient(90deg, rgba(0,229,255,0.06), rgba(0,229,255,0.02));
+  color: #ECFBFF;
+  font-weight:600;
+  box-shadow: 0 10px 30px rgba(0,229,255,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,229,255,0.12), 0 0 28px rgba(0,229,255,0.08);
+}
+
+/* -----------------------------------------
+   React Flow Controls – Dark Neon Glass
+------------------------------------------ */
+
+.react-flow__controls {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 10px !important;
+  padding: 6px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.react-flow__controls-button {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: #E6EEF3 !important;
+  border-radius: 6px !important;
+  width: 26px !important;
+  height: 26px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s ease;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(0,229,255,0.12) !important;
+  border-color: rgba(0,229,255,0.25) !important;
+  box-shadow: 0 0 12px rgba(0,229,255,0.25);
+  transform: translateY(-2px);
+}
+
+.react-flow__controls-button:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 6px rgba(0,229,255,0.35);
+}
+
+/* Control Icons (Zoom in/out, FitView, Lock) */
+.react-flow__controls-button svg {
+  stroke: #ECFBFF !important;
+  fill: none !important;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 4px rgba(0,229,255,0.25));
+}
+
+/* On hover, brighten the icons */
+.react-flow__controls-button:hover svg {
+  stroke: var(--accent) !important;
+  filter: drop-shadow(0 0 6px rgba(0,229,255,0.45));
+}
+
+
+
+/* MiniMap custom */
+/* MiniMap container */
+.react-flow__minimap {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+}
+
+/* Nodes shown inside minimap */
+.react-flow__minimap-node {
+  fill: var(--accent) !important;     /* electric-cyan */
+  stroke: rgba(0,229,255,0.6) !important;
+  opacity: 0.9 !important;
+}
+
+/* Background area of MiniMap */
+.react-flow__minimap-background {
+  fill: rgba(15, 20, 25, 0.55) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Mask (area showing viewport) */
+.react-flow__minimap-mask {
+  fill: rgba(0,229,255,0.12) !important;
+  stroke: rgba(0,229,255,0.4) !important;
+  opacity: 0.4 !important;
+}
+
+.react-flow__node {
+  pointer-events: all !important;
+}
+
+
+/* small responsive tweak */
+@media (max-width: 900px) {
+  .pipeline-toolbar {
+    display: none;
+  }
+}
